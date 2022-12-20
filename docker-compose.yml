@@ -23,7 +23,7 @@ services:
     build:
       context: ./putty
       dockerfile: Dockerfile
-    image: ftp-gpg-decrypt/putty:local
+    image: sftp-putty-gnupg/putty:local
     environment:
       - FTP_USER=$FTP_USER
       - FTP_PASS=$FTP_PASS
