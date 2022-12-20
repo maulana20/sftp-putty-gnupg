@@ -1,0 +1,37 @@
+version: '3.7'
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+    driver: local
+
+services:
+  sftp:
+    image: atmoz/sftp
+    volumes:
+        - ./data:/home/$FTP_USER/data
+    ports:
+        - $FTP_PORT
+    command: $FTP_USER:$FTP_PASS
+    restart: unless-stopped
+    networks:
+      - app-network
+  putty:
+    build:
+      context: ./putty
+      dockerfile: Dockerfile
+    image: ftp-gpg-decrypt/putty:local
+    environment:
+      - FTP_USER=$FTP_USER
+      - FTP_PASS=$FTP_PASS
+      - GPG_PASSPHRASE=$GPG_PASSPHRASE
+    volumes:
+      - ./putty/:/app
+    restart: unless-stopped
+    depends_on:
+      - sftp
+    networks:
+      - app-network
