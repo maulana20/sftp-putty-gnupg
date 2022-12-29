@@ -35,3 +35,18 @@ services:
       - sftp
     networks:
       - app-network
+  fm:
+    build:
+      context: ./fm
+      dockerfile: Dockerfile
+    image: sftp-putty-gnupg/fm:local
+    volumes:
+      - ./data/:/home/www-data
+    ports:
+      - $FM_PORT:$FM_PORT
+    restart: unless-stopped
+    depends_on:
+      - sftp
+      - putty
+    networks:
+      - app-network

@@ -7,3 +7,10 @@ sharing folder dan enksripsi file gpg pada docker container.
 
 ### guide
 buka `init.bat` kemudian `putty.bat`
+
+tiny filemanager `http://localhost`
+- `$ admin : admin@123`
+- `$ user  : 12345`
+
+### referensi
+- [tiny filemanager](https://tinyfilemanager.github.io)
