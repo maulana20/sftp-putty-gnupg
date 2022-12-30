@@ -1,4 +1,4 @@
 # download file
-docker-compose exec putty ./sftp_connect/connect.sh
+docker-compose exec putty ./startup.sh sftp
 # gpg convert file
-docker-compose exec putty ./convert.sh
+docker-compose exec putty ./startup.sh decrypt
